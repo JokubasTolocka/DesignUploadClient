@@ -30,6 +30,13 @@ const UploadPhoto = () => {
 
   return (
     <div className="uploadBox">
+      <input
+        name="description"
+        className="input"
+        value={description}
+        onChange={({ target }) => setDescription(target.value)}
+        placeholder="Description"
+      ></input>
       <label className="custom-file-upload">
         <input
           type="file"
@@ -39,13 +46,6 @@ const UploadPhoto = () => {
         />
         {data ? "Done! Another one?" : loading ? "Loading..." : "Upload Design"}
       </label>
-      <input
-        name="description"
-        className="input"
-        value={description}
-        onChange={({ target }) => setDescription(target.value)}
-        placeholder="Description"
-      ></input>
       {!!data && <DisplayUploadData data={data.designUpload} />}
     </div>
   );

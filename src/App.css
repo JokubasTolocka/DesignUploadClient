@@ -43,7 +43,7 @@ input[type="file"] {
   padding: 8px;
   border-radius: 50px;
   border: 1px solid black;
-  margin: 8px;
+  margin: 8px 16px 0 16px;
 }
 
 .input:focus {
