@@ -19,7 +19,7 @@ const UploadPhoto = () => {
     const normalSizeFile = file;
 
     const normalFile = await compressFile(0.8, 1080, normalSizeFile);
-    const compressedFile = await compressFile(0.4, 300, file);
+    const compressedFile = await compressFile(0.5, 700, file);
 
     sendPhoto({
       variables: { normalFile, compressedFile, description },
