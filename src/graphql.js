@@ -1,8 +1,16 @@
 import { gql } from "@apollo/client";
 
 export const PHOTO_UPLOAD = gql`
-  mutation photoUpload($normalFile: Upload!, $compressedFile: Upload!) {
-    photoUpload(normalFile: $normalFile, compressedFile: $compressedFile) {
+  mutation photoUpload(
+    $normalFile: Upload!
+    $compressedFile: Upload!
+    $description: String
+  ) {
+    photoUpload(
+      normalFile: $normalFile
+      compressedFile: $compressedFile
+      description: $description
+    ) {
       normalUrl
       compressedUrl
     }
@@ -10,8 +18,16 @@ export const PHOTO_UPLOAD = gql`
 `;
 
 export const DESIGN_UPLOAD = gql`
-  mutation designUpload($normalFile: Upload!, $compressedFile: Upload!) {
-    photoUpload(normalFile: $normalFile, compressedFile: $compressedFile) {
+  mutation designUpload(
+    $normalFile: Upload!
+    $compressedFile: Upload!
+    $description: String
+  ) {
+    photoUpload(
+      normalFile: $normalFile
+      compressedFile: $compressedFile
+      description: $description
+    ) {
       normalUrl
       compressedUrl
     }

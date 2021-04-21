@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import compressFile from "./utils/compress";
 import { DESIGN_UPLOAD } from "./graphql";
@@ -6,7 +6,10 @@ import DisplayUploadData from "./DisplayUploadData";
 import "./App.css";
 
 const UploadPhoto = () => {
-  const [sendDesign, { loading, error, data }] = useMutation(DESIGN_UPLOAD);
+  const [description, setDescription] = useState("");
+  const [sendDesign, { loading, error, data }] = useMutation(DESIGN_UPLOAD, {
+    onCompleted: () => setDescription(""),
+  });
 
   const onChange = async ({
     target: {
@@ -19,14 +22,14 @@ const UploadPhoto = () => {
     const compressedFile = await compressFile(0.4, 300, file);
 
     sendDesign({
-      variables: { normalFile, compressedFile },
+      variables: { normalFile, compressedFile, description },
     });
   };
 
   if (error) return <div>{JSON.stringify(error, null, 2)}</div>;
 
   return (
-    <div>
+    <div className="uploadBox">
       <label className="custom-file-upload">
         <input
           type="file"
@@ -36,6 +39,13 @@ const UploadPhoto = () => {
         />
         {data ? "Done! Another one?" : loading ? "Loading..." : "Upload Design"}
       </label>
+      <input
+        name="description"
+        className="input"
+        value={description}
+        onChange={({ target }) => setDescription(target.value)}
+        placeholder="Description"
+      ></input>
       {!!data && <DisplayUploadData data={data.designUpload} />}
     </div>
   );
