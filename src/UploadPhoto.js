@@ -36,7 +36,7 @@ const UploadPhoto = () => {
         value={description}
         onChange={({ target }) => setDescription(target.value)}
         placeholder="Description"
-      ></input>
+      />
       <label className="custom-file-upload">
         <input
           type="file"
