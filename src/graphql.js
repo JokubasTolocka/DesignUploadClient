@@ -23,7 +23,7 @@ export const DESIGN_UPLOAD = gql`
     $compressedFile: Upload!
     $description: String
   ) {
-    photoUpload(
+    designUpload(
       normalFile: $normalFile
       compressedFile: $compressedFile
       description: $description
